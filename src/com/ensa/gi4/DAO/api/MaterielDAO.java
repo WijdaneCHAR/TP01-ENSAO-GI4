@@ -1,9 +1,8 @@
-package com.ensa.gi4.service.api;
+package com.ensa.gi4.DAO.api;
 
 import com.ensa.gi4.modele.Materiel;
 
-public interface GestionMaterielService {
-    void init();
+public interface MaterielDAO {
     void lister();
     void ajouter(Materiel materiel);
     void supprimer(int id);
