@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class MaterielList {
     public ArrayList<Materiel> list = new ArrayList<>();
     public MaterielList(){
-        list.add(new Livre(1,"Livre1"));
-        list.add(new Chaise(2,"Chaise1"));
+//        list.add(new Livre(1,"Livre1"));
+//        list.add(new Chaise(2,"Chaise1"));
     }
 
 

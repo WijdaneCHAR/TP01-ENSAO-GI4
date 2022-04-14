@@ -17,15 +17,37 @@ public class MaterielDAOImp implements MaterielDAO {
     @Override
     public void lister() {
         System.out.println("-------------- Liste des materiels : --------------");
-        for (int i = 0; i < malist.getList().size(); i++) {
-            System.out.println(malist.getList().get(i).getId() + " : " + malist.getList().get(i).getName());
+        if(malist.getList().isEmpty())
+            System.out.println("La liste est vide");
+        else{
+            for (int i = 0; i < malist.getList().size(); i++) {
+                System.out.println(malist.getList().get(i).getId() + " : " + malist.getList().get(i).getName());
+            }
         }
+        System.out.println("---------------------------------------------------");
     }
 
     @Override
     public void ajouter(Materiel materiel) {
+
         ArrayList<Materiel> list = malist.getList();
-        list.add(materiel);
+        if(list.isEmpty()) {
+            list.add(materiel);
+            System.out.println("Materiel ajouté");
+        }
+        else{
+            for (int i = 0; i <list.size() ; i++)
+             {
+                if (list.get(i).getId() == materiel.getId()) {
+                    System.out.println("existant");
+                }
+                else {
+                    list.add(materiel);
+                    System.out.println("Materiel ajouté");
+                }
+            }
+        }
+
     }
 
     @Override

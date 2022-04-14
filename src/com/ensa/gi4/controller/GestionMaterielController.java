@@ -45,22 +45,20 @@ public class GestionMaterielController {
             System.out.println("Tapez 1 pour Livre et 2 pour Chaise: ");
             Scanner scannerA = new Scanner(System.in);
             String num = scannerA.next();
-            switch (num){
-                case "1":
+            switch (num) {
+                case "1" -> {
                     Livre livre = new Livre();
                     System.out.println("Entrez le nom de votre materiel livre:");
                     Scanner scanner1 = new Scanner(System.in);
-                    String nameLivre = scanner1.next();
+                    String nameLivre = scanner1.nextLine();
                     livre.setName(nameLivre);
                     System.out.println("Entrez son id :");
                     Scanner scanner3 = new Scanner(System.in);
                     int idLivre = scanner3.nextInt();
                     livre.setId(idLivre);
                     ajouterMateriel(livre);
-                    System.out.println("Livre bien ajouté!");
-                    break;
-
-                case "2":
+                }
+                case "2" -> {
                     Chaise chaise = new Chaise();
                     System.out.println("Enter le nom de votre materiel chaise:");
                     Scanner scanner2 = new Scanner(System.in);
@@ -72,7 +70,8 @@ public class GestionMaterielController {
                     chaise.setId(idChaise);
                     ajouterMateriel(chaise);
                     System.out.println("Chaise bien ajoutée!");
-                    break;
+                }
+                default -> throw new IllegalStateException("Unexpected value: " + num);
             }
         } else if ("3".equals(next)) {
             System.out.println("Entrez l'id du materiel à supprimer:");
