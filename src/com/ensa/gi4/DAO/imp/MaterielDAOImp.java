@@ -5,6 +5,7 @@ import com.ensa.gi4.DAO.api.MaterielDAO;
 import com.ensa.gi4.modele.Materiel;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MaterielDAOImp implements MaterielDAO {
     MaterielList malist = null;
@@ -31,23 +32,23 @@ public class MaterielDAOImp implements MaterielDAO {
     public void ajouter(Materiel materiel) {
 
         ArrayList<Materiel> list = malist.getList();
-        if(list.isEmpty()) {
-            list.add(materiel);
-            System.out.println("Materiel ajouté");
-        }
-        else{
-            for (int i = 0; i <list.size() ; i++)
-             {
-                if (list.get(i).getId() == materiel.getId()) {
-                    System.out.println("existant");
+
+            for (int i = 0; i <list.size() ; i++){
+            if(list.get(i).getId() == materiel.getId()){
+                System.out.println("Id deja existant");
+                System.out.println("--------- NB: liste des ids existants ----------");
+                for (int j = 0; j <list.size() ; j++){
+                    System.out.println(list.get(j).getId() + " ");
                 }
-                else {
-                    list.add(materiel);
-                    System.out.println("Materiel ajouté");
-                }
+                System.out.println("Veuillez entrez un id n'existant pas sur la liste:");
+                Scanner sc = new Scanner(System.in);
+                int newId = sc.nextInt();
+                materiel.setId(newId);
+                break;
             }
         }
-
+            list.add(materiel);
+            System.out.println("Materiel ajouté");
     }
 
     @Override
@@ -71,7 +72,6 @@ public class MaterielDAOImp implements MaterielDAO {
     @Override
     public void rechercher(String name) {
         boolean bool = false;
-
         for (int i = 0; i < malist.getList().size(); i++) {
             if(malist.getList().get(i).getName().equals(name)){
                 bool = true;

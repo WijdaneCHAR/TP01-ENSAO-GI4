@@ -82,7 +82,7 @@ public class GestionMaterielController {
         }else if ("4".equals(next)) {
             System.out.println("Entrez le nom du materiel à chercher:");
             Scanner scanner7 = new Scanner(System.in);
-            String name = scanner7.next();
+            String name = scanner7.nextLine();
             rechercherMateriel(name);
         }
         else if ("5".equals(next)) {
